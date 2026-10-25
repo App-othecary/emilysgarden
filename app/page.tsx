@@ -27,7 +27,7 @@ export default function Home() {
     <div className="site-shell">
       <header className="site-header">
         <a className="wordmark" href="/">
-          Emily<span>sGarden</span>
+          Emilys<span>Garden</span>
         </a>
 
         <nav className="site-nav" aria-label="Main navigation">
