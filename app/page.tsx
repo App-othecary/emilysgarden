@@ -1,4 +1,5 @@
 import NoteCard from "../app/components/NoteCard";
+import { getAllNotes } from "@/lib/notes";
 
 const notes = [
   {
@@ -23,6 +24,7 @@ const notes = [
 ];
 
 export default function Home() {
+  const notes = getAllNotes();
   return (
     <div className="site-shell">
       <header className="site-header">
@@ -53,6 +55,7 @@ export default function Home() {
           </p>
         </section>
 
+        {/* hide this in chapter 4 */}
         <section id="notes" aria-labelledby="notes-heading">
           <div className="section-heading">
             <h2 id="notes-heading">Growing ideas</h2>
@@ -61,7 +64,13 @@ export default function Home() {
 
           <div className="note-grid">
             {notes.map((note) => (
-              <NoteCard key={note.title} {...note} />
+              <NoteCard
+                key={note.slug}
+                title={note.title}
+                description={note.description}
+                type={note.type}
+                href={`/notes/${note.slug}`}
+              />
             ))}
           </div>
         </section>
