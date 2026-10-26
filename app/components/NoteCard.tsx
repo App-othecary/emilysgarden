@@ -1,3 +1,5 @@
+import { getNoteTypeLabel } from "@/lib/note-types";
+
 type NoteCardProps = {
   title: string;
   description: string;
@@ -13,7 +15,7 @@ export default function NoteCard({
 }: NoteCardProps) {
   return (
     <article className="note-card">
-      <span className="note-type">{type}</span>
+      <span className="note-type">{getNoteTypeLabel(type)}</span>
 
       <h3>{title}</h3>
 

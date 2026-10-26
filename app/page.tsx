@@ -73,6 +73,27 @@ export default function Home() {
               />
             ))}
           </div>
+          <section className="growth-guide">
+            <p className="eyebrow">How this garden grows</p>
+            <h2>Ideas are always evolving.</h2>
+
+            <div className="growth-guide-grid">
+              <div>
+                <span className="growth-label seedling">Seedling</span>
+                <p>Fresh thoughts and questions still taking shape.</p>
+              </div>
+
+              <div>
+                <span className="growth-label budding">Budding</span>
+                <p>Ideas being explored, expanded and connected.</p>
+              </div>
+
+              <div>
+                <span className="growth-label evergreen">Evergreen</span>
+                <p>Developed notes worth returning to and refining.</p>
+              </div>
+            </div>
+          </section>
         </section>
 
         <aside className="garden-note" id="garden-note">

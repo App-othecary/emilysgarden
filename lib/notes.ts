@@ -12,6 +12,7 @@ export type GardenNote = {
   description: string;
   type: string;
   date: string;
+  related: string[];
 };
 
 export function getAllNotes(): GardenNote[] {
@@ -31,6 +32,7 @@ export function getAllNotes(): GardenNote[] {
         description: String(data.description ?? ""),
         type: String(data.type ?? "seedling"),
         date: String(data.date ?? ""),
+        related: Array.isArray(data.related) ? data.related.map(String) : [],
       };
     });
 
@@ -56,5 +58,6 @@ export async function getNoteBySlug(slug: string) {
     type: String(data.type ?? "seedling"),
     date: String(data.date ?? ""),
     contentHtml: processedContent.toString(),
+    related: Array.isArray(data.related) ? data.related.map(String) : [],
   };
 }

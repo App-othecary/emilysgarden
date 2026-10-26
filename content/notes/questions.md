@@ -1,8 +1,10 @@
 ---
 title: A Collection of Questions
 description: Questions worth keeping around and exploring.
-type: seedling
+type: budding
 date: 2026-10-25
+related:
+  - learning-in-public
 ---
 
 # A Collection of Questions

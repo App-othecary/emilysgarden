@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getAllNotes, getNoteBySlug } from "@/lib/notes";
+import { getAllNotes, getNoteBySlug, type GardenNote } from "@/lib/notes";
+import { getNoteTypeLabel } from "@/lib/note-types";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -20,6 +21,12 @@ export default async function NotePage({ params }: Props) {
     notFound();
   }
 
+  const allNotes = getAllNotes();
+
+  const relatedNotes = note.related
+    .map((slug) => allNotes.find((item) => item.slug === slug))
+    .filter((item): item is GardenNote => Boolean(item));
+
   return (
     <main className="site-shell">
       <header className="site-header">
@@ -32,7 +39,7 @@ export default async function NotePage({ params }: Props) {
       </header>
 
       <article className="note-page">
-        <p className="eyebrow">{note.type}</p>
+        <p className="eyebrow">{getNoteTypeLabel(note.type)}</p>
         <h1>{note.title}</h1>
         <p className="note-page-description">{note.description}</p>
 
@@ -42,6 +49,23 @@ export default async function NotePage({ params }: Props) {
             __html: note.contentHtml,
           }}
         />
+        {relatedNotes.length > 0 && (
+          <section className="related-notes">
+            <h2>Growing from this idea</h2>
+            <p>Explore these connected notes.</p>
+
+            <ul>
+              {relatedNotes.map((relatedNote) => (
+                <li key={relatedNote.slug}>
+                  <Link href={`/notes/${relatedNote.slug}`}>
+                    {relatedNote.title}
+                  </Link>
+                  <p>{relatedNote.description}</p>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
 
         <p className="note-back">
           <Link href="/#notes">← Back to the garden</Link>

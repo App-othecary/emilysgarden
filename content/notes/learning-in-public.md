@@ -3,6 +3,9 @@ title: Learning in Public
 description: Why sharing unfinished work can help us learn.
 type: seedling
 date: 2026-10-25
+related:
+  - questions
+  - connections
 ---
 
 # Learning in Public

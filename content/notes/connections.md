@@ -3,6 +3,9 @@ title: Connections Everywhere
 description: Ideas become more interesting when they meet.
 type: evergreen
 date: 2026-10-25
+related:
+  - learning-in-public
+  - questions
 ---
 
 # Connections Everywhere
