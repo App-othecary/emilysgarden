@@ -1,4 +1,5 @@
 import NoteCard from "../app/components/NoteCard";
+import NoteExplorer from "../app/components/NoteExplorer";
 import { getAllNotes } from "@/lib/notes";
 
 const notes = [
@@ -62,7 +63,7 @@ export default function Home() {
             <span className="section-note">A few seeds to begin with</span>
           </div>
 
-          <div className="note-grid">
+          {/* <div className="note-grid">
             {notes.map((note) => (
               <NoteCard
                 key={note.slug}
@@ -72,7 +73,9 @@ export default function Home() {
                 href={`/notes/${note.slug}`}
               />
             ))}
-          </div>
+          </div> */}
+
+          <NoteExplorer notes={notes} />
           <section className="growth-guide">
             <p className="eyebrow">How this garden grows</p>
             <h2>Ideas are always evolving.</h2>

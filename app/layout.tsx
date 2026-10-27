@@ -12,13 +12,23 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = process.env.SITE_URL ?? "http://localhost:3000";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     default: "Emily's Garden",
     template: "%s | EmilysGarden",
   },
   description:
-    "My digital Garden contains threads, thoughts, clips and reels I've picked up on my travels through the internet",
+    "A living digital garden of thoughts, questions, discoveries and connected ideas.",
+  openGraph: {
+    title: "EmilysGarden",
+    description:
+      "A living digital garden of thoughts, questions, discoveries and connected ideas.",
+    siteName: "EmilysGarden",
+    type: "website",
+  },
 };
 
 export default function RootLayout({

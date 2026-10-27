@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllNotes, getNoteBySlug, type GardenNote } from "@/lib/notes";
 import { getNoteTypeLabel } from "@/lib/note-types";
+import type { Metadata } from "next";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -11,6 +12,34 @@ export function generateStaticParams() {
   return getAllNotes().map((note) => ({
     slug: note.slug,
   }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const note = await getNoteBySlug(slug);
+
+  if (!note) {
+    return {
+      title: "Note not found",
+    };
+  }
+
+  const url = `/notes/${note.slug}`;
+
+  return {
+    title: note.title,
+    description: note.description,
+    alternates: {
+      canonical: url,
+    },
+    openGraph: {
+      title: note.title,
+      description: note.description,
+      url,
+      type: "article",
+      siteName: "EmilysGarden",
+    },
+  };
 }
 
 export default async function NotePage({ params }: Props) {
