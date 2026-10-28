@@ -39,7 +39,7 @@ export default function Home() {
         </nav>
       </header>
 
-      <main>
+      <main id="main-content" className="site-shell">
         <section className="hero">
           <p className="eyebrow">A living collection of ideas</p>
 

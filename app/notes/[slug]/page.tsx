@@ -57,7 +57,7 @@ export default async function NotePage({ params }: Props) {
     .filter((item): item is GardenNote => Boolean(item));
 
   return (
-    <main className="site-shell">
+    <main id="main-content" className="site-shell">
       <header className="site-header">
         <Link className="wordmark" href="/">
           Emilys<span>Garden</span>
